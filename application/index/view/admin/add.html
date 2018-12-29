@@ -38,11 +38,11 @@
           </div>
 
           <div class="layui-form-item">
-              <label for="username" class="layui-form-label">
+              <label for="" class="layui-form-label">
                   <span class="x-red">*</span>所在部门
               </label>
               <div class="layui-input-inline">
-                  <select id="part_admin" name="part_admin" class="valid">
+                  <select id="part_manage" name="part_admin" class="valid">
                     <option value="0">选择所在部门</option>
                     {volist name="data" id="vo"}
                     <option value="{$vo.id}">{$vo.level|str_repeat='&nbsp;─│&nbsp;',###}{$vo.name}</option>

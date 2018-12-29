@@ -22,12 +22,15 @@ class Admin extends Base{
 				'hos'=>$hos
 			]);
 		}else{
-			$data = input('post.');
-			$data['hospitals'] =implode(',',$data['hospitals'])?'':implode(',',$data['hospitals']) ;
-			$data['part_id'] = implode(',',$data['part_id'])?'':implode(',',$data['part_id']);
+			$data = input('post.');//print_r($data);
+			$data['pass'] =MD5($data['pass']);
+			//$data['part_manage'] = implode(',',$data['part_id']);
 			//判断添加的用户是否存在
-
-			$res = $this->obj->add($data);var_dump($res);
+			$ress = $this->obj->add($data);var_dump($ress);
+			$reslut['uid'] = $ress;
+			$admin = $this->obj->get($ress);//print_r($admin->part_admin);exit;
+			$reslut['group_id'] = $admin->part_admin;
+			$res = model('AuthGroupAccess')->add($reslut);
 			if($res){
 				$this->error('新增员工成功');
 			}else{

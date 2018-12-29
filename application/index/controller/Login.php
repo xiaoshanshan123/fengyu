@@ -29,19 +29,31 @@ class Login extends Controller
 			'captcha|验证码' =>'require|captcha'
 		]);
 		if($res !==true){
-			return show(3,'error');
+			return show(0,'error');
 		}
+		/*判断账号是否正确 -------下面为本地超级管理员登录--------*/ 
+		/*
 
 		if(MD5($data['name']) !== config('user.admin')){
-				return show(1,'管理员账号不正确！');
+				return show(3,'账号不正确！');
 		}
+		
 		//var_dump(config('user.password'));exit;
 		if(MD5($data['pass'].config('user.yzm')) !==config('user.password')){
 
 				return show(2,'管理员密码不正确！');
+		}*/
+		$name = model('admin')->where('name',$data['name'])->find();
+
+		if(!$name){
+				return show(3,'账号不正确！');
 		}
-		session::set('name',$data['name']);
-		session::set('info',$data);
+		if($name->pass !==MD5($data['pass'])){
+				return show(2,'管理员密码不正确！');
+		}
+		//print_r($name);exit;
+		session::set('id',$name['id']);
+		session::set('info',$name);
 		return show(1,'登录成功');
 	}
 

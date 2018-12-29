@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:56:"F:\www\public/../application/index\view\admin\login.html";i:1545985383;s:48:"F:\www\application\index\view\public\header.html";i:1545208666;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:56:"F:\www\public/../application/index\view\admin\login.html";i:1546073319;s:48:"F:\www\application\index\view\public\header.html";i:1545208666;}*/ ?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -53,8 +53,10 @@
                       layer.alert('密码错误');
                    }else if(data.status ==3){
                      layer.alert('账号错误');
-                   }else{
+                   }else if(data.status ==0){
                      layer.alert('验证码错误');
+                   }else{
+                       layer.alert('未定义错误');
                    }
                 },'json');
                 return false;
