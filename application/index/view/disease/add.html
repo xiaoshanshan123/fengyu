@@ -1,0 +1,82 @@
+{include file="public/header"/}
+  <body>
+    <div class="x-body">
+        <form  method="post" action="{:url('Disease/add')}" class="layui-form">
+        
+          <div class="layui-form-item">
+              <label for="name" class="layui-form-label">
+                  <span class="x-red">*</span>疾病名：
+              </label>
+              <div class="layui-input-inline">
+                  <input type="text" id="name" name="name" required="" lay-verify="required"
+                  autocomplete="off" class="layui-input">
+              </div>
+               <div class="layui-form-mid layui-word-aux">
+                  <span class="x-red">*</span>名称必须填写
+              </div>
+          </div>
+          <div class="layui-form-item">
+              <label for="intro" class="layui-form-label">
+                  <span class="x-red">*</span>治疗项目： 
+              </label>
+              <div class="layui-input-inline">
+                  <input type="text" id="intro" name="xiangmu" required="" lay-verify="required"
+                  autocomplete="off" class="layui-input">
+              </div>
+              <div class="layui-form-mid layui-word-aux">
+                  <span class="x-red">*</span>多个用空格隔开
+              </div>
+          </div>
+          <div class="layui-form-item">
+              <label for="intro" class="layui-form-label">
+                  <span class="x-red">*</span>疾病简介： 
+              </label>
+              <div class="layui-input-inline">
+                  <input type="text" id="intro" name="intro" required="" lay-verify="required"
+                  autocomplete="off" class="layui-input">
+              </div>
+          </div>
+
+            <div class="layui-form-item">
+              <label class="layui-form-label">
+                  <span class="x-red">*</span>选择医院
+              </label>
+              <div class="layui-input-inline">
+                  <select id="hospital_id" name="hospital_id" class="valid">
+                    <option value="#">选择医院</option>
+                    {volist name="data" id="vo"}
+                    <option value="{$vo.id}">{$vo.name}</option>
+                    {/volist}
+                  </select>
+              </div>
+          </div>
+
+          <div class="layui-form-item">
+              <label for="intro" class="layui-form-label">
+                  <span class="x-red">*</span>优先度 
+              </label>
+              <div class="layui-input-inline">
+                  <input type="text" id="intro" name="sort" required="" lay-verify="required"
+                  autocomplete="off" class="layui-input">
+              </div>
+              <div class="layui-form-mid layui-word-aux">
+                  <span class="x-red">*</span>越大越优先，负值在最后
+              </div>
+          </div>
+
+          <div class="layui-form-item">
+              <label for="L_repass" class="layui-form-label">
+              </label>
+          <input type="submit" value="提交" class="layui-btn">
+          </div>
+      </form>
+    </div>
+<script type="text/javascript">
+    
+
+
+</script>
+   
+  </body>
+
+</html>

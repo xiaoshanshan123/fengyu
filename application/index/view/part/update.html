@@ -1,0 +1,110 @@
+{include file="public/header"/}
+<body>
+<div class="x-body">
+    <form  method="post" action="{:url('Part/add')}" class="layui-form">
+        <div class="layui-form-item">
+            <label for="username" class="layui-form-label">
+                <span class="x-red">*</span>选择部门
+            </label>
+            <div class="layui-input-inline">
+                <select id="pid" name="pid" class="valid">
+                    {volist name="data" id="vo"}
+                    {eq name="$res.pid" value="$vo.id"}
+                    <option value="{$vo.id}" selected="selected">{$vo.level|str_repeat='&nbsp;─│&nbsp;',###}{$vo.name}</option>
+                    {else/}
+                    <option value="{$vo.id}">{$vo.level|str_repeat='&nbsp;─│&nbsp;',###}{$vo.name}</option>
+                    {/eq}
+                    {/volist}
+                </select>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label for="name" class="layui-form-label">
+                <span class="x-red">*</span>名    称
+            </label>
+            <div class="layui-input-inline">
+                <input type="text" id="name" value="{$res.name}" name="name" required="" lay-verify="required"
+                       autocomplete="off" class="layui-input">
+            </div>
+            <div class="layui-form-mid layui-word-aux">
+                <span class="x-red">*</span>名称必须填写
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">站点</label>
+            <div class="layui-input-block">
+                <input type="checkbox" lay-skin="primary"  id="c_all" lay-filter="c_all" title="全部">
+                <input type="checkbox" lay-skin="primary"  id="f_all" lay-filter="f_all" title="反选">
+                <br/><br/>
+
+                {volist name="rules" id="vo"}
+                <!--<?php echo $vo['id']; ?>-->
+
+                <input type="checkbox" name="rules[]" lay-skin="primary" lay-filter="c_one" class="cityId"  title="{$vo.name}" value="{$vo.id}">
+                {/volist}
+            </div>
+        </div>
+
+
+        <input type="hidden" name="author" value="{$Think.session.info.name?$Think.session.info.name:''}">
+        <div class="layui-form-item">
+            <label for="L_repass" class="layui-form-label">
+            </label>
+            <input type="submit" value="提交" class="layui-btn">
+        </div>
+    </form>
+</div>
+<script type="text/javascript">
+    layui.use('form', function () {
+        var form = layui.form;
+        //全选
+        form.on('checkbox(c_all)', function (data) {
+            var a = data.elem.checked;
+            if (a == true) {
+                $(".cityId").prop("checked", true);
+                form.render('checkbox');
+            } else {
+                $(".cityId").prop("checked", false);
+                form.render('checkbox');
+            }
+        });
+        //反选
+        form.on('checkbox(f_all)', function (data) {
+            var item = $(".cityId");
+            item.each(function () {
+                if ($(this).prop("checked")) {
+                    $(this).prop("checked", false);
+                } else {
+                    $(this).prop("checked", true);
+                }
+            })
+            form.render('checkbox');
+        });
+        //有一个未选中全选取消选中
+        form.on('checkbox(c_one)', function (data) {
+            var item = $(".cityId");
+            for (var i = 0; i < item.length; i++) {
+                if (item[i].checked == false) {
+                    $("#c_all").prop("checked", false);
+                    form.render('checkbox');
+                    break;
+                }
+            }
+            //如果都勾选了  勾上全选
+            var  all=item.length;
+            for (var i = 0; i < item.length; i++) {
+                if (item[i].checked == true) {
+                    all--;
+                }
+            }
+            if(all==0){
+                $("#c_all").prop("checked", true);
+                form.render('checkbox');}
+        });
+    });
+</script>
+
+</body>
+
+</html>

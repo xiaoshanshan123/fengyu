@@ -1,0 +1,62 @@
+{include file="public/header"/}
+  <body>
+    <div class="x-body">
+        <form  method="post" action="{:url('Media/add')}" class="layui-form">
+        
+          <div class="layui-form-item">
+              <label for="name" class="layui-form-label">
+                  <span class="x-red">*</span>名    称
+              </label>
+              <div class="layui-input-inline">
+                  <input type="text" id="name" name="name" required="" lay-verify="required"
+                  autocomplete="off" class="layui-input">
+              </div>
+               <div class="layui-form-mid layui-word-aux">
+                  <span class="x-red">*</span>名称必须填写
+              </div>
+          </div>
+       
+          <div class="layui-form-item">
+              <label for="username" class="layui-form-label">
+                  <span class="x-red">*</span>选择医院
+              </label>
+              <div class="layui-input-inline">
+                  <select id="hospital_id" name="hospital_id" class="valid">
+                    <option value="#">选择医院</option>
+                    {volist name="data" id="vo"}
+                    <option value="{$vo.id}">{$vo.name}</option>
+                    {/volist}
+                  </select>
+              </div>
+          </div>
+
+            <div class="layui-form-item">
+              <label class="layui-form-label">
+                  <span class="x-red">*</span>选择类型
+              </label>
+              <div class="layui-input-inline">
+                  <select id="type_id" name="type_id" class="valid">
+                    <option value="1">网络[默认]</option>
+                      <option value="2">落地</option>
+                        <option value="3">其他</option>
+                          <option value="4">微信</option>
+                            <option value="5">杂志</option>
+                  </select>
+              </div>
+          </div>
+          <div class="layui-form-item">
+              <label for="L_repass" class="layui-form-label">
+              </label>
+          <input type="submit" value="提交" class="layui-btn">
+          </div>
+      </form>
+    </div>
+<script type="text/javascript">
+    
+
+
+</script>
+   
+  </body>
+
+</html>

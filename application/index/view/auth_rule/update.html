@@ -1,0 +1,47 @@
+{include file="public/header"/}
+  <body>
+    <div class="x-body">
+        <form  method="post" action="{:url('Part/add')}" class="layui-form">
+          <div class="layui-form-item">
+              <label for="username" class="layui-form-label">
+                  <span class="x-red">*</span>选择部门
+              </label>
+              <div class="layui-input-inline">
+                  <select id="pid" name="pid" class="valid">
+                    <option value="0">顶级部门</option>
+                    {volist name="data" id="vo"}
+                    <option value="{$vo.id}">{$vo.level|str_repeat='&nbsp;─│&nbsp;',###}{$vo.name}</option>
+                    {/volist}
+                  </select>
+              </div>
+          </div>
+
+          <div class="layui-form-item">
+              <label for="name" class="layui-form-label">
+                  <span class="x-red">*</span>名    称
+              </label>
+              <div class="layui-input-inline">
+                  <input type="text" id="name" name="name" required="" lay-verify="required"
+                  autocomplete="off" class="layui-input">
+              </div>
+               <div class="layui-form-mid layui-word-aux">
+                  <span class="x-red">*</span>名称必须填写
+              </div>
+          </div>
+          <input type="hidden" name="author" value="{$Think.session.info.name?$Think.session.info.name:''}">
+          <div class="layui-form-item">
+              <label for="L_repass" class="layui-form-label">
+              </label>
+          <input type="submit" value="提交" class="layui-btn">
+          </div>
+      </form>
+    </div>
+<script type="text/javascript">
+    
+
+
+</script>
+   
+  </body>
+
+</html>

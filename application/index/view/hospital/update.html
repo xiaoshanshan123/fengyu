@@ -1,0 +1,49 @@
+{include file="public/header"/}
+  <body>
+    <div class="x-body">
+        <form method="post" action="{:url('Hospital/update')}" class="layui-form">
+          <div class="layui-form-item">
+              <label for="username" class="layui-form-label">
+                  <span class="x-red">*</span>医院名称
+              </label>
+              <div class="layui-input-inline">
+                  <input type="text" id="name" name="name" value="{$data.name}" required="" lay-verify="required"
+                  autocomplete="off" class="layui-input">
+              </div>
+          </div>
+          <div class="layui-form-item">
+              <label for="username" class="layui-form-label">
+                  <span class="x-red">*</span>医院项目
+              </label>
+              <div class="layui-input-inline">
+                  <input type="text" id="intro" name="intro" value="{$data.intro}" required="" lay-verify="required"
+                  autocomplete="off" class="layui-input">
+              </div>
+          </div>
+           <input type="hidden" id="id" name="id" value="{$data.id}">
+
+          <div class="layui-form-item layui-form-text">
+              <label for="desc" class="layui-form-label">
+                  描述
+              </label>
+              <div class="layui-input-block">
+                  <textarea placeholder="请输入内容" id="desc" name="config" class="layui-textarea">{$data.config}</textarea>
+              </div>
+          </div>
+          <div class="layui-form-item">
+              <label for="L_repass" class="layui-form-label">
+              </label>
+              <input type="submit" class="layui-btn" >
+          </div>
+      </form>
+    </div>
+    <script>
+        layui.use(['form','layer'], function(){
+            $ = layui.jquery;
+          var form = layui.form
+          ,layer = layui.layer;
+        
+        });
+    </script>
+  </body>
+</html>

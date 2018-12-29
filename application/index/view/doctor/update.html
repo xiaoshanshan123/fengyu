@@ -1,0 +1,61 @@
+{include file="public/header"/}
+  
+  <body>
+    <div class="x-body">
+        <form method="post" action="{:url('Doctor/update')}" class="layui-form">
+          <div class="layui-form-item">
+              <label for="name" class="layui-form-label">
+                  <span class="x-red">*</span>医生姓名
+              </label>
+              <div class="layui-input-inline">
+                  <input type="text" id="name" name="name" value="{$res.name}" required="" lay-verify="required"
+                  autocomplete="off" class="layui-input">
+              </div>
+          </div>
+          <div class="layui-form-item">
+              <label for="intro" class="layui-form-label">
+                  <span class="x-red">*</span>医生详情
+              </label>
+              <div class="layui-input-inline">
+                  <input type="text" id="intro" name="intro" value="{$res.intro}" required="" lay-verify="required"
+                  autocomplete="off" class="layui-input">
+              </div>
+          </div>
+
+          <div class="layui-form-item">
+              <label for="username" class="layui-form-label">
+                  <span class="x-red">*</span>选择医院
+              </label>
+              <div class="layui-input-inline">
+                  <select id="hospital_id" name="hospital_id" class="valid">
+                     
+                    {volist name="data" id="vo"}
+                    {if condition="$res['hospital_id'] eq $vo['id']"}
+                    <option value="{$vo.id}" selected="selected">{$vo.name}</option>
+                    {else /}
+                    <option value="{$vo.id}">{$vo.name}</option>
+                    {/if}
+                    {/volist}
+                  </select>
+              </div>
+          </div>
+
+          <div><input type="hidden" name="id" value="{$res.id}"></div>
+
+          <div class="layui-form-item">
+              <label for="L_repass" class="layui-form-label">
+              </label>
+          <input type="submit" value="提交" class="layui-btn">
+          </div>
+      </form>
+    </div>
+
+    <script>var _hmt = _hmt || []; (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?b393d153aeb26b46e9431fabaf0f6190";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();</script>
+  </body>
+
+</html>

@@ -1,0 +1,303 @@
+<body>
+    <div class="container">
+        <div class="logo"><a href="./index.html">系统</a></div>
+        <div class="left_open">
+            <i title="展开左侧栏" class="iconfont">&#xe699;</i>
+        </div>
+        <ul class="layui-nav left fast-add" lay-filter="">
+          <li class="layui-nav-item">
+            <a href="javascript:;">系统管理</a>
+            <dl class="layui-nav-child"> <!-- 二级菜单 -->
+              <dd><a onclick="x_admin_show('菜单管理','http://www.baidu.com')"><i class="iconfont">&#xe6a2;</i>菜单管理</a></dd>
+              <dd><a onclick="x_admin_show('图片','http://www.baidu.com')"><i class="iconfont">&#xe6a8;</i>图片</a></dd>
+              <dd><a onclick="x_admin_show('用户','http://www.baidu.com')"><i class="iconfont">&#xe6b8;</i>用户</a></dd>
+            </dl>
+          </li>
+          <li class="layui-nav-item">
+            <a href="javascript:;">+新增</a>
+            <dl class="layui-nav-child"> <!-- 二级菜单 -->
+              <dd><a onclick="x_admin_show('资讯','http://www.baidu.com')"><i class="iconfont">&#xe6a2;</i>资讯</a></dd>
+              <dd><a onclick="x_admin_show('图片','http://www.baidu.com')"><i class="iconfont">&#xe6a8;</i>图片</a></dd>
+               <dd><a onclick="x_admin_show('用户','http://www.baidu.com')"><i class="iconfont">&#xe6b8;</i>用户</a></dd>
+            </dl>
+          </li>
+          <li class="layui-nav-item">
+            <a href="javascript:;">+新增</a>
+            <dl class="layui-nav-child"> <!-- 二级菜单 -->
+              <dd><a onclick="x_admin_show('资讯','http://www.baidu.com')"><i class="iconfont">&#xe6a2;</i>资讯</a></dd>
+              <dd><a onclick="x_admin_show('图片','http://www.baidu.com')"><i class="iconfont">&#xe6a8;</i>图片</a></dd>
+               <dd><a onclick="x_admin_show('用户','http://www.baidu.com')"><i class="iconfont">&#xe6b8;</i>用户</a></dd>
+            </dl>
+          </li>
+        </ul>
+
+        <ul class="layui-nav right" lay-filter="">
+          <li class="layui-nav-item">
+            <a href="javascript:;">{$Think.session.info.name =='admin'?'超级管理员  '.$Think.session.info.name:'管理员  '.$Think.session.info.name}</a>
+            <dl class="layui-nav-child"> <!-- 二级菜单 -->
+              <dd><a onclick="x_admin_show('个人信息','http://www.baidu.com')">个人信息</a></dd>
+              <dd><a onclick="x_admin_show('切换帐号','http://www.baidu.com')">切换帐号</a></dd>
+              <dd><a href="{:url('Login/logout')}">退出</a></dd>
+            </dl>
+          </li>
+          <li class="layui-nav-item to-index"><a href="/">前台首页</a></li>
+        </ul>
+        
+    </div>
+    <!-- 顶部结束 -->
+    <!-- 中部开始 -->
+     <!-- 左侧菜单开始 -->
+    <div class="left-nav">
+      <div id="side-nav">
+        <ul id="nav">
+            <li>
+                <a href="javascript:;">
+                    <i class="iconfont">&#xe6b8;</i>
+                    <cite>病人预约管理</cite>
+                    <i class="iconfont nav_right">&#xe697;</i>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a _href="member-list.html">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>预约登记列表</cite>
+                            
+                        </a>
+                    </li >
+                    <li>
+                        <a _href="member-del.html">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>客服明细报表</cite>
+                            
+                        </a>
+                    </li>
+                     <li>
+                        <a _href="member-del.html">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>月趋势报表</cite>
+                            
+                        </a>
+                    </li>
+                     <li>
+                        <a _href="member-del.html">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>自定义图形报表</cite>
+                            
+                        </a>
+                    </li>
+                     <li>
+                        <a _href="member-del.html">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>导出病人数据</cite>
+                            
+                        </a>
+                    </li>
+
+                      <li>
+                        <a _href="member-del.html">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>数据横向对比</cite>
+                        </a>
+                    </li>
+                    
+                  
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <i class="iconfont">&#xe723;</i>
+                    <cite>订单管理</cite>
+                    <i class="iconfont nav_right">&#xe697;</i>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a _href="order-list.html">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>订单列表</cite>
+                        </a>
+                    </li >
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <i class="iconfont">&#xe723;</i>
+                    <cite>分类管理</cite>
+                    <i class="iconfont nav_right">&#xe697;</i>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a _href="cate.html">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>多级分类</cite>
+                        </a>
+                    </li >
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <i class="iconfont">&#xe723;</i>
+                    <cite>城市联动</cite>
+                    <i class="iconfont nav_right">&#xe697;</i>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a _href="city.html">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>三级地区联动</cite>
+                        </a>
+                    </li >
+                </ul>
+            </li>
+              <li>
+                <a href="javascript:;">
+                    <i class="iconfont">&#xe6ce;</i>
+                    <cite>系统统计</cite>
+                    <i class="iconfont nav_right">&#xe697;</i>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a _href="echarts1.html">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>拆线图</cite>
+                        </a>
+                    </li >
+                    <li>
+                        <a _href="echarts2.html">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>柱状图</cite>
+                        </a>
+                    </li>
+                    <li>
+                        <a _href="echarts3.html">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>地图</cite>
+                        </a>
+                    </li>
+                    <li>
+                        <a _href="echarts4.html">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>饼图</cite>
+                        </a>
+                    </li>
+                    <li>
+                        <a _href="echarts5.html">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>雷达图</cite>
+                        </a>
+                    </li>
+                    <li>
+                        <a _href="echarts6.html">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>k线图</cite>
+                        </a>
+                    </li>
+                    <li>
+                        <a _href="echarts7.html">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>热力图</cite>
+                        </a>
+                    </li>
+                    <li>
+                        <a _href="echarts8.html">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>仪表图</cite>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <i class="iconfont">&#xe726;</i>
+                    <cite>系统管理</cite>
+                    <i class="iconfont nav_right">&#xe697;</i>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a _href="{:url('Part/index')}">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>菜单管理</cite>
+                        </a>
+                    </li >
+                    <li>
+                        <a _href="{:url('Admin/index')}">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>人员管理</cite>
+                        </a>
+                    </li >
+                   
+                    <li>
+                        <a _href="{:url('auth_rule/index')}">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>权限管理</cite>
+                        </a>
+                    </li >
+                     <li>
+                        <a _href="{:url('Part/index')}">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>部门管理</cite>
+                        </a>
+                    </li >
+                     <li>
+                        <a _href="{:url('Part/index')}">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>医院管理</cite>
+                        </a>
+                    </li >
+                     <li>
+                        <a _href="{:url('Part/index')}">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>通知管理</cite>
+                        </a>
+                    </li >
+                </ul>
+            </li>
+          
+            <li>
+                <a href="javascript:;">
+                    <i class="iconfont">&#xe6b4;</i>
+                    <cite>设置</cite>
+                    <i class="iconfont nav_right">&#xe697;</i>
+                </a>
+                <ul class="sub-menu">
+                     <li>
+                        <a _href="{:url('Hospital/index')}">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>医院设置</cite>
+                        </a>
+                    </li>
+                    <li>
+                        <a _href="{:url('Doctor/index')}">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>医生设置</cite>
+                        </a>
+                    </li>
+                    <li>
+                        <a _href="{:url('Disease/index')}">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>疾病设置</cite>
+                        </a>
+                    </li>
+                    <li>
+                        <a _href="{:url('Media/index')}">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>媒体类型设置</cite>
+                        </a>
+                    </li>
+                    <li>
+                        <a _href="{:url('Depart/index')}">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>医院科室设置</cite>
+                        </a>
+                    </li>
+                    <li>
+                        <a _href="{:url('Engine/index')}">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>搜索引擎设置</cite>
+                        </a>
+                    </li>
+                </ul>
+
+            </li>
+        </ul>
+      </div>
+    </div>
