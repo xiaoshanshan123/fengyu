@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50540
 File Encoding         : 65001
 
-Date: 2018-12-24 16:03:35
+Date: 2018-12-30 17:25:53
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -3925,7 +3925,7 @@ CREATE TABLE `sys_admin` (
   `menuclicks` mediumtext NOT NULL COMMENT '菜单点击数据',
   `addtime` int(10) DEFAULT NULL COMMENT '资料添加时间',
   `part_id` int(8) NOT NULL DEFAULT '0' COMMENT '所在部门',
-  `part_admin` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否部门管理员',
+  `part_admin` int(1) NOT NULL DEFAULT '0' COMMENT '是否部门管理员',
   `part_manage` varchar(250) NOT NULL COMMENT '能管理的部门数据',
   `hospitals` varchar(500) NOT NULL DEFAULT '0' COMMENT '所在医院',
   `detail` mediumtext NOT NULL COMMENT '用户详细资料(序列化)',
@@ -3938,12 +3938,15 @@ CREATE TABLE `sys_admin` (
   KEY `name` (`name`),
   KEY `online` (`online`),
   KEY `addtime` (`addtime`)
-) ENGINE=MyISAM AUTO_INCREMENT=936 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=960 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of sys_admin
 -- ----------------------------
-INSERT INTO `sys_admin` VALUES ('1', '1', 'admin', '123456', '0', null, '', '0', '-', null, null, null, '0', '0', '0', '', null, '0', '0', '', '0', '', '', '', '', '', '');
+INSERT INTO `sys_admin` VALUES ('950', '1', 'admin', '0192023a7bbd73250516f069df18b500', '0', null, '', '0', '-', null, null, null, '0', '0', '0', '', '1546075261', '0', '127', '', '0', '', '', 'fengyu', '', '', '');
+INSERT INTO `sys_admin` VALUES ('957', '1', 'demo', 'e10adc3949ba59abbe56e057f20f883e', '0', null, '', '0', '-', null, null, null, '0', '0', '0', '', '1546160534', '1006', '0', '', '0', '', '', 'admin', '', '', '');
+INSERT INTO `sys_admin` VALUES ('958', '1', 'admin123', 'e10adc3949ba59abbe56e057f20f883e', '0', null, '', '0', '-', null, null, null, '0', '0', '0', '', '1546161157', '1002', '0', '', '0', '', '', 'demo', '', '', '');
+INSERT INTO `sys_admin` VALUES ('959', '1', 'admin000', 'e10adc3949ba59abbe56e057f20f883e', '0', null, '', '0', '-', null, null, null, '0', '0', '0', '', '1546161231', '1011', '0', '', '0', '', '', 'demo', '', '', '');
 
 -- ----------------------------
 -- Table structure for sys_admin_copy
@@ -4018,6 +4021,10 @@ CREATE TABLE `sys_auth_group_access` (
 -- ----------------------------
 -- Records of sys_auth_group_access
 -- ----------------------------
+INSERT INTO `sys_auth_group_access` VALUES ('950', '1001');
+INSERT INTO `sys_auth_group_access` VALUES ('957', '1006');
+INSERT INTO `sys_auth_group_access` VALUES ('958', '1002');
+INSERT INTO `sys_auth_group_access` VALUES ('959', '1011');
 
 -- ----------------------------
 -- Table structure for sys_auth_rule
@@ -4040,15 +4047,15 @@ CREATE TABLE `sys_auth_rule` (
 -- ----------------------------
 -- Records of sys_auth_rule
 -- ----------------------------
-INSERT INTO `sys_auth_rule` VALUES ('1', '系统设置', 'Sys', '1', '1', '', '0', null, null);
-INSERT INTO `sys_auth_rule` VALUES ('2', '部门管理', 'Part/index', '1', '1', '', '1', null, null);
-INSERT INTO `sys_auth_rule` VALUES ('3', '部门修改', 'Part/update', '1', '1', '', '2', null, null);
-INSERT INTO `sys_auth_rule` VALUES ('4', '部门删除', 'Part/del', '1', '1', '', '2', null, null);
-INSERT INTO `sys_auth_rule` VALUES ('5', '部门新增', 'Part/add', '1', '1', '', '2', null, null);
-INSERT INTO `sys_auth_rule` VALUES ('6', '医生管理', 'Doctor/index', '1', '1', '', '1', null, null);
-INSERT INTO `sys_auth_rule` VALUES ('7', '医生修改', 'Doctor/update', '1', '1', '', '6', null, null);
-INSERT INTO `sys_auth_rule` VALUES ('8', '医生新增', 'Doctor/add', '1', '1', '', '6', null, null);
-INSERT INTO `sys_auth_rule` VALUES ('9', '医生删除', 'Doctor/del', '1', '1', '', '6', null, null);
+INSERT INTO `sys_auth_rule` VALUES ('1', '系统设置', 'index/Sys', '1', '1', '', '0', null, null);
+INSERT INTO `sys_auth_rule` VALUES ('2', '部门管理', 'index/Part/index', '1', '1', '', '1', null, null);
+INSERT INTO `sys_auth_rule` VALUES ('3', '部门修改', 'index/Part/update', '1', '1', '', '2', null, null);
+INSERT INTO `sys_auth_rule` VALUES ('4', '部门删除', 'index/Part/del', '1', '1', '', '2', null, null);
+INSERT INTO `sys_auth_rule` VALUES ('5', '部门新增', 'index/Part/add', '1', '1', '', '2', null, null);
+INSERT INTO `sys_auth_rule` VALUES ('6', '医生管理', 'index/Doctor/index', '1', '1', '', '1', null, null);
+INSERT INTO `sys_auth_rule` VALUES ('7', '医生修改', 'index/Doctor/update', '1', '1', '', '6', null, null);
+INSERT INTO `sys_auth_rule` VALUES ('8', '医生新增', 'index/Doctor/add', '1', '1', '', '6', null, null);
+INSERT INTO `sys_auth_rule` VALUES ('9', '医生删除', 'index/Doctor/del', '1', '1', '', '6', null, null);
 
 -- ----------------------------
 -- Table structure for sys_character
@@ -4355,24 +4362,28 @@ DROP TABLE IF EXISTS `sys_part`;
 CREATE TABLE `sys_part` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `pid` int(10) NOT NULL DEFAULT '0',
-  `name` varchar(20) NOT NULL,
+  `title` varchar(20) NOT NULL,
   `addtime` int(10) NOT NULL DEFAULT '0',
   `author` varchar(32) NOT NULL,
   `status` int(10) DEFAULT NULL,
   `update_time` int(10) DEFAULT NULL,
+  `rules` char(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=1010 DEFAULT CHARSET=utf8 COMMENT='部门表';
+) ENGINE=MyISAM AUTO_INCREMENT=1013 DEFAULT CHARSET=utf8 COMMENT='部门表';
 
 -- ----------------------------
 -- Records of sys_part
 -- ----------------------------
-INSERT INTO `sys_part` VALUES ('1001', '0', '系统管理员', '1545572044', 'admin', '1', '1545572044');
-INSERT INTO `sys_part` VALUES ('1002', '1001', '医院管理员', '1545572111', 'admin', '1', '1545572111');
-INSERT INTO `sys_part` VALUES ('1003', '1002', '咨询组', '1545572125', 'admin', '1', '1545572125');
-INSERT INTO `sys_part` VALUES ('1004', '1002', '经营部', '1545572133', 'admin', '1', '1545572133');
-INSERT INTO `sys_part` VALUES ('1005', '1002', '导医组', '1545572140', 'admin', '1', '1545572140');
-INSERT INTO `sys_part` VALUES ('1006', '1002', '微信组', '1545572146', 'admin', '1', '1545572146');
-INSERT INTO `sys_part` VALUES ('1007', '1002', '落地组', '1545572154', 'admin', '1', '1545617280');
+INSERT INTO `sys_part` VALUES ('1001', '0', '系统管理员', '1545572044', 'admin', '1', '1545572044', '1,2,3,4,5,6,7,8,9');
+INSERT INTO `sys_part` VALUES ('1002', '1001', '医院管理员', '1545572111', 'admin', '1', '1545572111', '1,2,3,4,5,6,7,8,9');
+INSERT INTO `sys_part` VALUES ('1003', '1002', '咨询组', '1545572125', 'admin', '1', '1545572125', '1,2,3,4,5,6,7,8,9');
+INSERT INTO `sys_part` VALUES ('1004', '1002', '经营部', '1545572133', 'admin', '1', '1545572133', '1,2,3,4,5,6,7,8,9');
+INSERT INTO `sys_part` VALUES ('1005', '1002', '导医组', '1545572140', 'admin', '1', '1545572140', '1,2,3,4,5,6,7,8,9');
+INSERT INTO `sys_part` VALUES ('1006', '1002', '微信组', '1545572146', 'admin', '1', '1545572146', '1,2,3,4,5,6,7,8,9');
+INSERT INTO `sys_part` VALUES ('1007', '1002', '落地组', '1545572154', 'admin', '1', '1545617280', '1,2,3,4,5,6,7,8,9');
+INSERT INTO `sys_part` VALUES ('1010', '1002', '天康医院院长', '1545963701', 'admin', '1', '1545963701', '1,2,3,4,5,6,7,8,9');
+INSERT INTO `sys_part` VALUES ('1011', '1010', '天康医院男科主任', '1545963843', 'admin', '1', '1545963843', '2,3,4,5');
+INSERT INTO `sys_part` VALUES ('1012', '1010', '天康医院妇科主任', '1545963924', 'admin', '1', '1545963924', '2,3,4,5');
 
 -- ----------------------------
 -- Table structure for sys_session
