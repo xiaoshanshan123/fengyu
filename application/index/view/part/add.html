@@ -10,7 +10,7 @@
                   <select id="pid" name="pid" class="valid">
                     <option value="0">顶级部门</option>
                     {volist name="data" id="vo"}
-                    <option value="{$vo.id}">{$vo.level|str_repeat='&nbsp;─│&nbsp;',###}{$vo.name}</option>
+                    <option value="{$vo.id}">{$vo.level|str_repeat='&nbsp;─│&nbsp;',###}{$vo.title}</option>
                     {/volist}
                   </select>
               </div>
@@ -21,7 +21,7 @@
                   <span class="x-red">*</span>名    称
               </label>
               <div class="layui-input-inline">
-                  <input type="text" id="name" name="name" required="" lay-verify="required"
+                  <input type="text" id="name" name="title" required="" lay-verify="required"
                   autocomplete="off" class="layui-input">
               </div>
                <div class="layui-form-mid layui-word-aux">
@@ -29,18 +29,34 @@
               </div>
           </div>
             <div class="layui-form-item">
-                <label class="layui-form-label">权   限</label>
-                <div class="layui-input-block">
+                <!-- <div class="layui-input-block">
                     <input type="checkbox" lay-skin="primary"  id="c_all" lay-filter="c_all" title="全部">
                     <input type="checkbox" lay-skin="primary"  id="f_all" lay-filter="f_all" title="反选">
                     <br/><br/>
                     {volist name="rules" id="vo"}
                     <input type="checkbox" name="rules[]" lay-skin="primary" lay-filter="c_one" class="cityId"  title="{$vo.name}" value="{$vo.id}">
                     {/volist}
-                </div>
+                </div> -->
+                <table class="layui-table">
+                      <colgroup>
+                        <col width="100">
+                        <col width="150">
+                        <col>
+                      </colgroup>
+                      <thead>
+                        <tr>
+                          <th>权   限</th>
+                        </tr> 
+                      </thead>
+                      <tbody>
+                         {volist name="rules" id="vo"}
+                        <tr>
+                          <td><input class="checkbox-parent {if condition="$vo['level'] neq 0"} checkbox-child {/if}" type="checkbox" dataid="id-1-2-3" value="{$vo.id}" name="rules[]" title="{$vo.level|str_repeat='&nbsp;&nbsp;',###*3}{$vo.name}" lay-skin="primary"></td>
+                        </tr>
+                        {/volist}
+                      </tbody>
+                    </table>
             </div>
-
-
           <input type="hidden" name="author" value="{$Think.session.info.name?$Think.session.info.name:''}">
           <div class="layui-form-item">
               <label for="L_repass" class="layui-form-label">
@@ -50,7 +66,13 @@
       </form>
     </div>
 <script type="text/javascript">
-   layui.use('form', function () {
+
+      $('input.checkbox-parent').on('change',function(){
+          var dataid = $(this).attr('dataid');
+          alert('dataid');
+      })
+
+   /*layui.use('form', function () {
         var form = layui.form;
         //全选
         form.on('checkbox(c_all)', function (data) {
@@ -96,7 +118,7 @@
                 $("#c_all").prop("checked", true);
                 form.render('checkbox');}
         });
-    });
+    });*/
 </script>
    
   </body>

@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:55:"F:\www\public/../application/index\view\part\index.html";i:1545965250;s:48:"F:\www\application\index\view\public\header.html";i:1545208666;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:55:"F:\www\public/../application/index\view\part\index.html";i:1546136960;s:48:"F:\www\application\index\view\public\header.html";i:1545208666;}*/ ?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -51,7 +51,7 @@
             <td>
               <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='2'><i class="layui-icon">&#xe605;</i></div>
             </td>
-            <td><?php echo str_repeat('&nbsp;─│&nbsp;',$vo['level']); ?><?php echo $vo['name']; ?></td>
+            <td><?php echo str_repeat('&nbsp;─│&nbsp;',$vo['level']); ?><?php echo $vo['title']; ?></td>
             <td><?php echo str_repeat('&nbsp;─│&nbsp;',$vo['level']); ?><?php echo $vo['level']==0?'顶级部门':$vo['level'].'级部门'; ?></td>
             <td><?php echo $vo['addtime']; ?></td>
             <td class="td-manage">

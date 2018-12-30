@@ -51,7 +51,7 @@ class Login extends Controller
 		if($name->pass !==MD5($data['pass'])){
 				return show(2,'管理员密码不正确！');
 		}
-		//print_r($name);exit;
+		print_r($name);//exit;
 		session::set('id',$name['id']);
 		session::set('info',$name);
 		return show(1,'登录成功');

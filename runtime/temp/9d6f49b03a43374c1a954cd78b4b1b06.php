@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:54:"F:\www\public/../application/index\view\admin\add.html";i:1546067990;s:48:"F:\www\application\index\view\public\header.html";i:1545208666;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:54:"F:\www\public/../application/index\view\admin\add.html";i:1546160336;s:48:"F:\www\application\index\view\public\header.html";i:1545208666;}*/ ?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -59,10 +59,10 @@
                   <span class="x-red">*</span>所在部门
               </label>
               <div class="layui-input-inline">
-                  <select id="part_manage" name="part_admin" class="valid">
+                  <select id="part_manage" name="part_id" class="valid">
                     <option value="0">选择所在部门</option>
                     <?php if(is_array($data) || $data instanceof \think\Collection || $data instanceof \think\Paginator): $i = 0; $__LIST__ = $data;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
-                    <option value="<?php echo $vo['id']; ?>"><?php echo str_repeat('&nbsp;─│&nbsp;',$vo['level']); ?><?php echo $vo['name']; ?></option>
+                    <option value="<?php echo $vo['id']; ?>"><?php echo str_repeat('&nbsp;─│&nbsp;',$vo['level']); ?><?php echo $vo['title']; ?></option>
                     <?php endforeach; endif; else: echo "" ;endif; ?>
                   </select>
               </div>

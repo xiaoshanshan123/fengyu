@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:56:"F:\www\public/../application/index\view\admin\index.html";i:1545620394;s:48:"F:\www\application\index\view\public\header.html";i:1545208666;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:56:"F:\www\public/../application/index\view\admin\index.html";i:1546160118;s:48:"F:\www\application\index\view\public\header.html";i:1545208666;}*/ ?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -49,25 +49,20 @@
               <div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i class="layui-icon">&#xe605;</i></div>
             </th>
             <th>ID</th>
-            <th>登录名</th>
-            <th>手机</th>
-            <th>邮箱</th>
-            <th>角色</th>
-            <th>加入时间</th>
+            <th>用户名称</th>
+            <th>所属用户组</th>
             <th>状态</th>
             <th>操作</th>
         </thead>
         <tbody>
+        <?php if(is_array($res) || $res instanceof \think\Collection || $res instanceof \think\Paginator): $i = 0; $__LIST__ = $res;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
           <tr>
             <td>
               <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='2'><i class="layui-icon">&#xe605;</i></div>
             </td>
-            <td>1</td>
-            <td>admin</td>
-            <td>18925139194</td>
-            <td>113664000@qq.com</td>
-            <td>超级管理员</td>
-            <td>2017-01-01 11:11:42</td>
+            <td><?php echo $vo['id']; ?></td>
+            <td><?php echo $vo['name']; ?></td>
+            <td><?php echo $vo['gtitle']; ?></td>
             <td class="td-status">
               <span class="layui-btn layui-btn-normal layui-btn-mini">已启用</span></td>
             <td class="td-manage">
@@ -82,6 +77,7 @@
               </a>
             </td>
           </tr>
+        <?php endforeach; endif; else: echo "" ;endif; ?>
         </tbody>
       </table>
       <div class="page">

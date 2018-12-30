@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:53:"F:\www\public/../application/index\view\part\add.html";i:1545980633;s:48:"F:\www\application\index\view\public\header.html";i:1545208666;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:53:"F:\www\public/../application/index\view\part\add.html";i:1546153971;s:48:"F:\www\application\index\view\public\header.html";i:1545208666;}*/ ?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -27,7 +27,7 @@
                   <select id="pid" name="pid" class="valid">
                     <option value="0">顶级部门</option>
                     <?php if(is_array($data) || $data instanceof \think\Collection || $data instanceof \think\Paginator): $i = 0; $__LIST__ = $data;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
-                    <option value="<?php echo $vo['id']; ?>"><?php echo str_repeat('&nbsp;─│&nbsp;',$vo['level']); ?><?php echo $vo['name']; ?></option>
+                    <option value="<?php echo $vo['id']; ?>"><?php echo str_repeat('&nbsp;─│&nbsp;',$vo['level']); ?><?php echo $vo['title']; ?></option>
                     <?php endforeach; endif; else: echo "" ;endif; ?>
                   </select>
               </div>
@@ -38,7 +38,7 @@
                   <span class="x-red">*</span>名    称
               </label>
               <div class="layui-input-inline">
-                  <input type="text" id="name" name="name" required="" lay-verify="required"
+                  <input type="text" id="name" name="title" required="" lay-verify="required"
                   autocomplete="off" class="layui-input">
               </div>
                <div class="layui-form-mid layui-word-aux">
@@ -46,18 +46,34 @@
               </div>
           </div>
             <div class="layui-form-item">
-                <label class="layui-form-label">权   限</label>
-                <div class="layui-input-block">
+                <!-- <div class="layui-input-block">
                     <input type="checkbox" lay-skin="primary"  id="c_all" lay-filter="c_all" title="全部">
                     <input type="checkbox" lay-skin="primary"  id="f_all" lay-filter="f_all" title="反选">
                     <br/><br/>
                     <?php if(is_array($rules) || $rules instanceof \think\Collection || $rules instanceof \think\Paginator): $i = 0; $__LIST__ = $rules;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
                     <input type="checkbox" name="rules[]" lay-skin="primary" lay-filter="c_one" class="cityId"  title="<?php echo $vo['name']; ?>" value="<?php echo $vo['id']; ?>">
                     <?php endforeach; endif; else: echo "" ;endif; ?>
-                </div>
+                </div> -->
+                <table class="layui-table">
+                      <colgroup>
+                        <col width="100">
+                        <col width="150">
+                        <col>
+                      </colgroup>
+                      <thead>
+                        <tr>
+                          <th>权   限</th>
+                        </tr> 
+                      </thead>
+                      <tbody>
+                         <?php if(is_array($rules) || $rules instanceof \think\Collection || $rules instanceof \think\Paginator): $i = 0; $__LIST__ = $rules;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
+                        <tr>
+                          <td><input class="checkbox-parent <?php if($vo['level'] != 0): ?> checkbox-child <?php endif; ?>" type="checkbox" dataid="id-1-2-3" value="<?php echo $vo['id']; ?>" name="rules[]" title="<?php echo str_repeat('&nbsp;&nbsp;',$vo['level']*3); ?><?php echo $vo['name']; ?>" lay-skin="primary"></td>
+                        </tr>
+                        <?php endforeach; endif; else: echo "" ;endif; ?>
+                      </tbody>
+                    </table>
             </div>
-
-
           <input type="hidden" name="author" value="<?php echo \think\Session::get('info.name')?\think\Session::get('info.name'):''; ?>">
           <div class="layui-form-item">
               <label for="L_repass" class="layui-form-label">
@@ -67,7 +83,13 @@
       </form>
     </div>
 <script type="text/javascript">
-   layui.use('form', function () {
+
+      $('input.checkbox-parent').on('change',function(){
+          var dataid = $(this).attr('dataid');
+          alert('dataid');
+      })
+
+   /*layui.use('form', function () {
         var form = layui.form;
         //全选
         form.on('checkbox(c_all)', function (data) {
@@ -113,7 +135,7 @@
                 $("#c_all").prop("checked", true);
                 form.render('checkbox');}
         });
-    });
+    });*/
 </script>
    
   </body>

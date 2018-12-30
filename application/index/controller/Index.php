@@ -6,6 +6,7 @@ class Index extends Base
 {
     public function index()
     {
+        //var_dump(session('id'));
     	//var_dump($this->getLoginUser());
         return $this->fetch();
 
